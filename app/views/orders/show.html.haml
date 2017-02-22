@@ -1,0 +1,32 @@
+%p#notice= notice
+
+%p
+  %b Order datetime:
+  = @order.order_datetime
+%p
+  %b Status:
+  = @order.status
+%p
+  %b Payment code:
+  = @order.payment_code
+%p
+  %b Ship time:
+  = @order.ship_date
+  = @order.ship_time.display_name if @order.ship_time_id?
+
+%h3 明細
+%table
+  %thead
+    %tr
+      %th Product
+      %th Quantity
+      %th Order
+
+  %tbody
+    - @order.order_items.each do |order_item|
+      %tr
+        %td= order_item.product
+        %td= order_item.quantity
+        %td= order_item.order
+
+= link_to '注文履歴一覧に戻る', orders_path

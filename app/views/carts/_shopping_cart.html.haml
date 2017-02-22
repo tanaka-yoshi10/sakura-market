@@ -1,0 +1,8 @@
+- if current_order.order_items.size == 0
+  .alert.alert-warning.text-center
+    現在カートは空です
+    = link_to "買い物を続ける", root_path, class: "alert-link"
+- else
+  = # REVIEW = render @配列 指定にしたかったが、each_with_index使いたかったから戻した
+  - current_order.order_items.each_with_index do |order_item, idx|
+    = render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true, idx: idx

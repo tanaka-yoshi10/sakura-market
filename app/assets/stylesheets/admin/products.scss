@@ -1,0 +1,45 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.image-container {
+  text-align: center;
+  height: 180px;
+  margin-bottom: 10px;
+}
+.product-thumbnail {
+  height: 150px;
+  width: auto;
+  padding: 5px;
+}
+.product-thumbnail-small {
+  height: 50px;
+  width: auto;
+  padding: 5px;
+}
+#products input[type=number],
+#product input[type=number]{
+  width: 50px;
+  margin-right: 10px;
+}
+.trim img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.trim {
+  overflow: hidden;
+  width: 100%;/* トリミングしたい枠の幅 */
+  height: 200px;/* トリミングしたい枠の高さ */
+  position: relative;
+}
+.product-detail-photo {
+  text-align: center;
+}
+.product-detail-photo img {
+  width: 80%;
+  padding: 10px;
+  height: auto;
+}

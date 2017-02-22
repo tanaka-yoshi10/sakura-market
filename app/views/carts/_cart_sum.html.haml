@@ -1,0 +1,20 @@
+.well
+  = form_for CartSumForm.new, url:'/cart', method: 'PUT' do |f|
+    = f.hidden_field :order_id, value: @order.id
+    .row
+      = f.submit "注文を確定する", class: "btn btn-primary"
+    .row
+      %h3 注文内容
+      %table
+        %tr
+          %td 商品の小計：
+          %td.text-right ¥ #{number_to_currency @order.subtotal, :locale => 'ja'}
+        %tr
+          %td 手数料、配送料：
+          %td.text-right ¥ #{number_to_currency @order.charge_total, :locale => 'ja'}
+        %tr
+          %td{colspan:2}
+            %hr{style:"margin-top:10px;margin-bottom:10px;"}
+        %tr
+          %td 請求金額
+          %td.text-right ¥ #{number_to_currency @order.total, :locale => 'ja'}

@@ -1,0 +1,14 @@
+%h1 管理者ログイン
+= form_for([:admin, @user], url: '/admin', method: :post) do |f|
+  - if flash[:error]
+    #error_explanation
+      %h2 ユーザー名またはパスワードが違います
+  = hidden_field_tag :referer, flash[:referer]
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :password
+    = f.password_field :password
+  .actions
+    = f.submit 'ログイン'

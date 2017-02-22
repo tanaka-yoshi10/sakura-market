@@ -1,0 +1,20 @@
+現在の住所
+
+%p#notice= notice
+
+%p
+  %b 郵便番号:
+  = @address.zip_code
+%p
+  %b 都道府県:
+  = @address.prefectures
+%p
+  %b 市区町村:
+  = @address.city
+%p
+  %b 番地:
+  = @address.address
+%p
+  %b マンション名等:
+  = @address.address2
+

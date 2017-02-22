@@ -1,0 +1,10 @@
+%h3 ユーザ情報
+
+%p
+  %b 名前:
+  = @user.name
+%p
+  %b メールアドレス:
+  = @user.email
+
+= link_to '編集', edit_admin_user_path(@user)

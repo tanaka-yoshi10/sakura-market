@@ -1,0 +1,9 @@
+.col-xs-6.col-md-3
+  .thumbnail
+    .trim
+      = image_tag product.image.thumb.url, class: "product-thumbnail" if product.image?
+    .caption
+      %h3
+        = link_to product.name, admin_product_path(product)
+      %span.text-right 単価
+      %span{style:'color: green'}  #{number_to_currency product.price, :locale => 'ja'}

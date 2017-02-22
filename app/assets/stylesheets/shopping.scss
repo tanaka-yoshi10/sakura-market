@@ -1,0 +1,36 @@
+// Place all the styles related to the shopping controller here.
+// They will automatically be included in application.css.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.sort-header {
+  height: 50px;
+}
+a.sort {
+  width: 100px;
+}
+a.asc, a.desc, a:visited.asc, a:visited.desc {
+  color: white;
+}
+.asc:before{
+  content: "\f0de";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  top: 25%;
+  margin-left: -13px;
+  position: absolute;
+  font-size: large;
+  color: white;
+}
+.desc:before {
+  content: "\f0dd";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  bottom: 25%;
+  margin-left: -13px;
+  position: absolute;
+  font-size: large;
+  color: white;
+}

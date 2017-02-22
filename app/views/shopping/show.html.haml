@@ -1,0 +1,18 @@
+.col-xs-6.product-detail-photo
+  = image_tag @product.image.url if @product.image?
+#product.col-xs-6
+  %h3
+    = @product.name
+  %p
+    %b 価格:
+    = @product.price
+  %p
+    %b 商品説明:
+    = @product.description
+
+  = form_for @order_item, remote: true do |f|
+    .input-group
+      = f.number_field :quantity, value: 1, class: "form-control", min: 1
+      = f.hidden_field :product_id, value: @product.id
+      = f.submit "カートに入れる", class: "btn btn-primary"
+

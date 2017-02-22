@@ -1,0 +1,3 @@
+$('#ship_time').html("#{escape_javascript(render '/carts/ship_time_item', locals: {order: @order })}");
+$('#ship_date').html("#{escape_javascript(render '/carts/ship_date_item', locals: {order: @order })}");
+$('#change_ship_times_model').modal_success();

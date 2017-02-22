@@ -1,0 +1,10 @@
+%h1 ログインする
+= simple_form_for([:admin, @user], url: '/login', method: :post) do |f|
+  - if flash[:alert]
+    .alert.alert-danger
+      = flash[:alert]
+  = f.error_notification
+  = hidden_field_tag :referer, flash[:referer]
+  = f.input :email
+  = f.input :password
+  = f.button :submit, 'ログイン'

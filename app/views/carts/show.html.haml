@@ -1,0 +1,20 @@
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+- if @order.errors.any?
+  #error_explanation.alert.alert-danger
+    %ul
+      - @order.errors.full_messages.each do |message|
+        %li
+          = message
+.row
+  .col-xs-9
+    .cart-top
+      = render 'cart_top'
+    .shopping-cart
+      = render 'shopping_cart'
+  .cart-summary.col-xs-3
+    = render 'cart_sum'

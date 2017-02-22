@@ -1,0 +1,36 @@
+.well
+  .row
+    .col-xs-4
+      %h4 お届け先住所
+      %div
+        = @current_user.address.zip_code if @current_user.address.present?
+      %div
+        = @current_user.address.prefectures + @current_user.address.city + @current_user.address.address if @current_user.address.present?
+        = @current_user.address.address2 if @current_user.address.present?
+      = link_to '変更', edit_address_profiles_path(caller: 'cart'), 'data-toggle' => 'modal', class: "btn btn-primary"
+
+    .col-xs-4
+      .row
+        %h4 お支払い方法
+        %div 代引き決済
+      .row
+        %h4 送料
+
+    .col-xs-4
+      %h4 お届け希望日時
+      #ship_date
+        = selected_ship_date
+      #ship_time
+        = selected_ship_time
+      = link_to '変更', '#change_ship_times_model', 'data-toggle' => 'modal', class: "btn btn-primary"
+
+.modal.fade#change_ship_times_model(tabindex="-1" aria-hidden=true)
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close(data-dismiss="modal" aria-hidden=true) &times
+        %h4.modal-title#myModdalLabel お届け希望日時設定
+      .modal-body
+        = render 'form_ship_times', modal:true
+      .modal-footer
+        %btn.btn.btn-default(data-dismiss="modal") 閉じる

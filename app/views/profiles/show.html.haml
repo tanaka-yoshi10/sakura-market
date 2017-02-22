@@ -1,0 +1,10 @@
+%h3 プロフィール
+
+%p
+  %b 名前:
+  = @current_user.name
+%p
+  %b メールアドレス:
+  = @current_user.email
+
+= render 'admin/addresses/show' if @current_user.address.present?

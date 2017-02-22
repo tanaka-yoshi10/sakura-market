@@ -1,0 +1,13 @@
+.col-xs-12#products
+  .row.sort-header
+    .col-xs-12
+      %span 並び替え
+      .btn-group
+        = sortable('display_order', '標準')
+        = sortable('name', '名前')
+        = sortable('price', '価格')
+  .row
+    - @products.each_with_index do |product, idx|
+      = render "product_row", product: product, order: current_order, order_item: @order_item, idx: idx
+  = paginate @products
+

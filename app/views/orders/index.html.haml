@@ -1,0 +1,22 @@
+%h1 注文履歴
+- if @orders.size == 0
+  .alert.alert-warning.text-center
+    注文履歴はありません
+    = link_to "買い物を続ける", root_path, class: "alert-link"
+- else
+  - @orders.each do |order|
+    .well
+      .row
+        .col-xs-3
+          %span 注文日:
+          %span
+            = l(order.order_datetime, format: :date_only) if order.order_datetime?
+        .col-xs-2
+          %span 合計:
+          %span{style:"color: green;"} #{number_to_currency order.total, :locale => 'ja'}
+        .col-xs-7
+          %span お届け先:
+          %span #{order.ship_zip_code} #{order.ship_address}
+      .row
+        - order.order_items.each do |order_item|
+          = render 'order_item_row', product: order_item.product, order_item: order_item, new_order_item: @new_order_item, show_total: true

@@ -1,0 +1,13 @@
+%ul
+  %li
+    = link_to 'プロフィール', profiles_path
+  %li
+    = link_to 'プロフィール編集', edit_profiles_path
+  %li
+    = link_to 'パスワード変更', edit_password_profiles_path
+  %li
+    = link_to 'お届け先住所編集', edit_address_profiles_path
+  %li
+    = link_to '注文履歴', orders_path
+  %li
+    = link_to 'ログアウト', session_path, method: :delete

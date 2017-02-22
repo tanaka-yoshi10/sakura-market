@@ -1,0 +1,19 @@
+.well
+  .row
+    .col-xs-8
+      %h4 #{product.name}
+      = image_tag product.image.thumb.url, class: "product-thumbnail" if product.image?
+    .col-xs-4
+      = form_for [current_order, order_item], remote: true do |f|
+        %span.text-right 単価:
+        %span{style:"color: green;"} #{number_to_currency product.price, :locale => 'ja'}
+        .row
+          .col-xs-4
+            = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", id: "quantity-#{idx}", min: 1
+            = f.hidden_field :product_id, value: product.id
+          .col-xs-8.text-right
+            .btn-group
+              = f.submit "数量更新", class: "btn btn-primary"
+              = link_to "削除", [current_order, order_item], { data: { confirm: "'#{order_item.product.name}' をカートから削除してもよろしいですか？ " }, method: :delete, remote: true, class: "btn btn-danger" }
+        %span.text-right 小計:
+        %span{style:"color: green;"} #{number_to_currency order_item.total_price, :locale => 'ja'}

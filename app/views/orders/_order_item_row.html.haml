@@ -1,0 +1,19 @@
+.row
+  .col-xs-2
+    = image_tag product.image.thumb.url, class: "product-thumbnail-small" if product.image?
+  .col-xs-2
+    .row{style:"margin-top: 10px;margin-bottom: 10px;"}
+      = form_for [current_order, new_order_item], remote: true do |f|
+        .input-group
+          = f.hidden_field :quantity, value: 1
+          = f.hidden_field :product_id, value: product.id
+          = f.submit "カートに入れる", class: "btn btn-sm btn-primary"
+  .col-xs-5
+    %h4 #{product.name}
+  .col-xs-3
+    %span.text-right 単価:
+    %span{style:"color: green;"} #{number_to_currency product.price, :locale => 'ja'}
+    %span.text-right 数量:
+    %span.text-right #{order_item.quantity.to_i}
+    %span.text-right 小計:
+    %span{style:"color: green;"} #{number_to_currency order_item.total_price, :locale => 'ja'}
