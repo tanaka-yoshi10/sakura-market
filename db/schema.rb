@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170218082550) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "addresses", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.string   "zip_code"
     t.string   "prefectures"
     t.string   "city"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.integer  "user_id"
   end
 
-  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cart_items", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
     t.integer  "quantity"
     t.datetime "created_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.index ["product_id"], name: "index_cart_items_on_product_id", using: :btree
   end
 
-  create_table "cod_charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cod_charges", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.string   "cod_charge_code"
     t.decimal  "charge",          precision: 10
     t.decimal  "start_amount",    precision: 10
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.datetime "updated_at",                     null: false
   end
 
-  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_items", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
     t.integer  "quantity"
     t.integer  "order_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.datetime "order_datetime"
     t.integer  "status"
     t.string   "payment_code"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.decimal  "price",                       precision: 10
     t.text     "description",   limit: 65535
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 20170218082550) do
     t.datetime "updated_at",                                 null: false
   end
 
-  create_table "ship_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ship_times", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.string   "shiptime_code"
     t.string   "display_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",      null: false
