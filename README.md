@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+さくらマーケット
 
-* Ruby version
+* 一般ユーザ用URL
 
-* System dependencies
+  http://hostname/
 
-* Configuration
+* 管理者用URL
 
-* Database creation
+  htpp://hostname/admin
+  
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
