@@ -5,6 +5,6 @@
       = flash[:alert]
   = f.error_notification
   = hidden_field_tag :referer, flash[:referer]
-  = f.input :email
-  = f.input :password
+  = f.input :email, input_html: { size: 30, minlength: 1 }
+  = f.input :password, input_html: { size: 30 }
   = f.button :submit, 'ログイン'
