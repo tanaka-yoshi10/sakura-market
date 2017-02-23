@@ -53,13 +53,10 @@ test:
 #  username: sonic-ec
 #  password: <%= ENV['SONIC-EC_DATABASE_PASSWORD'] %>
 production:
-  adapter: postgresql
-  encoding: utf8
+  <<: *default
   host: <%= ENV['DB_HOST'] %>
-  port: 5432
+  port: <%= ENV['DB_PORT'] %>
   database: <%= ENV['DB_DATABASE'] %>
-  pool: 5
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  timeout: 5000
 
