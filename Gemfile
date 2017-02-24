@@ -47,6 +47,10 @@ gem 'business_time', '~> 0.7.6'
 gem 'rails-i18n'
 # Simple Form
 gem 'simple_form'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
 # pagination
 gem 'kaminari'
 gem 'font-awesome-sass', '~> 4.7.0'
