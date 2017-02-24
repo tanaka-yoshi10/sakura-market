@@ -24,6 +24,6 @@ ShipTime.create([
 ])
 User.delete_all
 User.create([
-  {email: 'admin@mail.jp', name: '管理者', admin_flag: true, password_digest: '$2a$10$BH.IQxzd3kEWbHAuHDEWgedl2XW/2zcSV82L0VVuU6DYZlBri77D2'},
-  {email: 'test@mail.jp', name: 'テスト', admin_flag: false, password_digest: '$2a$10$BH.IQxzd3kEWbHAuHDEWgedl2XW/2zcSV82L0VVuU6DYZlBri77D2'}
+  {email: 'admin@mail.jp', name: '管理者', admin_flag: true, password: 'admin'},
+  {email: 'test@mail.jp', name: 'テスト', admin_flag: false, password: 'test'}
 ])

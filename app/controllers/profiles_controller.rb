@@ -45,7 +45,7 @@ class ProfilesController < ApplicationController
   def set_address
     @address = @current_user.address
     unless @address
-      @address = Address.new
+      @address = @current_user.build_address
     end
   end
 

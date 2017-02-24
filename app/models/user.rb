@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 4 }
 
+  default_value_for :admin_flag, false
+
 end
