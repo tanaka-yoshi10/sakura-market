@@ -1,9 +1,15 @@
-.col-xs-6.col-md-3
-  .thumbnail
-    .trim
-      = image_tag product.image.thumb.url, class: "product-thumbnail" if product.image?
-    .caption
-      %h3
-        = link_to product.name, admin_product_path(product)
-      %span.text-right 単価
-      %span{style:'color: green'}  #{number_to_currency product.price, :locale => 'ja'}
+.row
+  .col-xs-2
+    = image_tag product.image.thumb.url, class: "product-thumbnail-small" if product.image?
+  .col-xs-3
+    %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
+      = link_to product.name, admin_product_path(product)
+      %span.glyphicon.glyphicon-search
+  .col-xs-4
+    %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
+      %span.text
+        = product.description
+  .col-xs-3
+    %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
+      %span.text-right 単価:
+      %span{style:"color: green;"} #{number_to_currency product.price, :locale => 'ja'}

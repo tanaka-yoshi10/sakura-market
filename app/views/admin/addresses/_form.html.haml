@@ -1,8 +1,8 @@
 = simple_form_for [:admin, @user, @address] do |f|
   = f.error_notification
-  = f.input :zip_code, label: '郵便番号'
-  = f.input :prefectures, label: '都道府県'
-  = f.input :city, label: '市区町村'
-  = f.input :address, label: '番地'
-  = f.input :address2, label: 'マンション名等'
+  = f.input :zip_code, label: '郵便番号', input_html: { size: 8, minlength: 3, maxlength: 8 }
+  = f.input :prefectures, label: '都道府県', input_html: { size: 10, minlength: 1, maxlength: 10 }
+  = f.input :city, label: '市区町村', input_html: { size: 10, minlength: 1, maxlength: 10 }
+  = f.input :address, label: '番地', input_html: { size: 30, minlength: 1, maxlength: 50 }
+  = f.input :address2, label: 'マンション名等', input_html: { size: 30, minlength: 1, maxlength: 50 }
   = f.button :submit, '保存する'
