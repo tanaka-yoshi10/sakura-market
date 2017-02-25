@@ -1,3 +1,5 @@
 %h3 ユーザー登録
-= render 'form', user: @user
-= link_to 'ユーザ一覧に戻る', admin_users_path
+.row
+  = render 'form', user: @user
+.row{style: "margin-top:10px;"}
+  = link_to 'ユーザ一覧に戻る', admin_users_path, class: "btn btn-info"

@@ -8,8 +8,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
-  validates :password, presence: true, length: { minimum: 4 }
+  validates :password, length: { minimum: 4 }, if: :password_presence?
+  validates :password_digest, presence: true
 
   default_value_for :admin_flag, false
 
+  def password_presence?
+    password && password.length > 0
+  end
 end

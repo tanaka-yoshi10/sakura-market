@@ -1,13 +1,15 @@
 = simple_form_for [:admin, @product] do |f|
-  = f.error_notification
-  = f.input :name, label: '商品名'
-  = f.input :price, label: '価格', as: :decimal
-  = f.input :description, label: '商品説明', as: :text
-  = f.input :display_flag, label: '表示する', as: :boolean
-  = f.input :display_order, label: '表示順序', as: :decimal
-  = f.input :image, label: '商品画像', as: :file, class: "filestyle", data: {"icon": "false", "buttonText": "ファイルを選択する"}
-  .media
-    %label 登録されている画像
-    .media-left
-      = image_tag @product.image.thumb.url class: "media-object" if @product.image?
-  = f.button :submit, '保存する', class: "btn btn-primary"
+  .row
+    = f.error_notification
+    = f.input :name, label: '商品名'
+    = f.input :price, label: '価格', as: :decimal
+    = f.input :description, label: '商品説明', as: :text
+    = f.input :display_flag, label: '表示する', as: :boolean
+    = f.input :display_order, label: '表示順序', as: :decimal
+    = f.input :image, label: '商品画像', as: :file, class: "filestyle", data: {"icon": "false", "buttonText": "ファイルを選択する"}
+    .media
+      %label 登録されている画像
+      .media-left
+        = image_tag @product.image.thumb.url class: "media-object" if @product.image?
+  .row{style: "margin-top:10px;"}
+    = f.button :submit, '保存する', class: "btn btn-primary"

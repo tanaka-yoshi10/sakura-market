@@ -1,6 +1,6 @@
 %p#notice= notice
 %h3 ユーザ一覧
-%table
+%table.table
   %thead
     %tr
       %th 名前
@@ -16,4 +16,4 @@
         %td= link_to '住所編集', edit_admin_user_address_path(user)
         %td= link_to '削除', [:admin, user], method: :delete, data: { confirm: '削除してもよろしいですか？' }
 %br/
-= link_to '新規作成', new_admin_user_path
+= link_to '新規作成', new_admin_user_path, class: "btn btn-primary"

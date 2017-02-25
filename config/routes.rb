@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     member do
       get 'edit_password'
       get 'edit_address'
-      get 'edit_address_from_cart'
       patch 'update_address'
+      patch 'update_password'
     end
   end
 

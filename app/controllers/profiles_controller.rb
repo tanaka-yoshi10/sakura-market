@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :edit_address, :update_address]
+  before_action :set_address, only: [:show, :edit_address, :update_address]
 
   # REVIEW AddressesControllerは管理者専用としたので、自分の住所変更はここに組み込み
 
@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @current_user.update(user_params)
+    if @current_user.update_attributes(profile_params)
       redirect_to profiles_url
     else
       render :edit
@@ -40,6 +40,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update_password
+    if @current_user.update_attributes(password_params)
+      redirect_to profiles_url
+    else
+      render :edit
+    end
+  end
   private
 
   def set_address
@@ -49,8 +56,12 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, address_attributes: [:zip_code, :prefectures, :city, :address, :address2,:id])
+  def profile_params
+    params.require(:user).permit(:id, :name, :email)
+  end
+
+  def password_params
+    params.require(:user).permit(:id, :password, :password_confirmation)
   end
 
   def address_params

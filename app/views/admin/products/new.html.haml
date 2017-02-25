@@ -1,5 +1,5 @@
 %h3 商品を追加する
-
-= render 'form'
-
-= link_to '商品一覧に戻る', admin_products_path
+.row
+  = render 'form'
+.row{style: "margin-top:10px;"}
+  = link_to '商品一覧に戻る', admin_products_path, class: "btn btn-default"

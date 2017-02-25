@@ -1,15 +1,20 @@
 .row
   .col-xs-2
     = image_tag product.image.thumb.url, class: "product-thumbnail-small" if product.image?
-  .col-xs-3
+  .col-xs-2
     %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
-      = link_to product.name, admin_product_path(product)
-      %span.glyphicon.glyphicon-search
-  .col-xs-4
+      %span
+        = product.name
+  .col-xs-3
     %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
       %span.text
         = product.description
-  .col-xs-3
+  .col-xs-2
     %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
       %span.text-right 単価:
       %span{style:"color: green;"} #{number_to_currency product.price, :locale => 'ja'}
+  .col-xs-3
+    %div{style:"display: table-cell; vertical-align: middle; height: 50px;"}
+      = link_to '詳細', admin_product_path(product), class: "btn btn-link"
+      = link_to '編集', edit_admin_product_path(product), class: "btn btn-link"
+      = link_to '削除', admin_product_path(product), method: :delete, class: "btn btn-sm btn-denger", data: { confirm: '削除してもよろしいですか？' }
