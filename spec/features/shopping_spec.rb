@@ -31,8 +31,8 @@ feature 'ショッピング機能' do
 
     click_link 'カートを見る'
 
-    save_and_open_page
-    expect(page).to have_button '注文を確定する'
+    #save_and_open_page
+    expect(page).to have_link '注文を確定する'
     expect(page).to have_content '長野産とまと(6個入り)'
     expect(page).to have_field 'quantity-0', with: '2'
 
@@ -47,7 +47,7 @@ feature 'ショッピング機能' do
 
     click_link 'カートを見る'
 
-    click_button '注文を確定する'
+    click_link '注文を確定する'
     #save_and_open_page
 
   end

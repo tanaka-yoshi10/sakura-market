@@ -45,10 +45,9 @@ describe ProfilesController do
     let(:request) {get :edit, params: {user_id: user.id}}
 
     context '正常値・住所あり' do
-      let!(:address) {create(:address, user_id: user.id)}
-      it "@addressに適切な値が設定されていること" do
+      it "@current_userに適切な値が設定されていること" do
         request
-        expect(assigns(:address)).to eq address
+        expect(assigns(:current_user)).to eq user
       end
 
       it "renders the :edit template" do
@@ -58,9 +57,9 @@ describe ProfilesController do
     end
 
     context '正常値 住所なし' do
-      it "@addressが新規で作成されていること" do
+      it "@current_userに適切な値が設定されていること" do
         request
-        expect(assigns(:address)).to be_a_new(Address)
+        expect(assigns(:current_user)).to eq user
       end
 
       it "renders the :show template" do

@@ -32,7 +32,6 @@ class Admin::UsersController < Admin::AdminApplicationController
     end
   end
 
-  # DELETE /users/1
   def destroy
     @user.destroy
     redirect_to admin_users_url, notice: 'ユーザを削除しました'
@@ -42,10 +41,6 @@ class Admin::UsersController < Admin::AdminApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    @address = @user.address
-    unless @address
-      @address = @user.build_address
-    end
   end
 
   def user_params

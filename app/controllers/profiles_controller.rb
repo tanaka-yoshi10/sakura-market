@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_address, only: [:show, :edit_address, :update_address]
 
   # REVIEW AddressesControllerは管理者専用としたので、自分の住所変更はここに組み込み
+  # REVIEW プロフィール変更とパスワード変更を別画面としたのでcontrollerのメソッドも別にしている
 
   def show
   end
@@ -28,8 +29,7 @@ class ProfilesController < ApplicationController
   def update_address
     if @address.update(address_params)
       # REVIEW 呼出元画面（caller）によって遷移先を変える
-      address = params[:address]
-      caller = address[:caller]
+      caller = params[:caller]
       if caller == 'cart'
         redirect_to cart_url
       else

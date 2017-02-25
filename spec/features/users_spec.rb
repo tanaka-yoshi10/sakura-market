@@ -49,7 +49,7 @@ feature '管理者のユーザ管理機能' do
 
     click_button '更新する'
 
-    save_and_open_page
+    #save_and_open_page
     expect(page).to have_content 'ユーザ情報'
     expect(page).to have_content '変更後の名前'
   end

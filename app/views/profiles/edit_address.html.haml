@@ -1,6 +1,6 @@
 = simple_form_for(@address, url: '/profiles/update_address', method: :patch) do |f|
   = f.error_notification
-  = f.input :caller, :as => :hidden
+  = hidden_field_tag :caller, @caller
   = f.input :zip_code, label: '郵便番号'
   = f.input :prefectures, label: '都道府県'
   = f.input :city, label: '市区町村'
