@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   default_value_for :admin_flag, false
 
+  # REVIEW パスワード以外の項目のみ更新したいがパスワードのバリデーションに引っかかるのでその対応
   def update_profile_only(user_params)
     self.password = DUMMY_PASSWORD
     self.password_confirmation = DUMMY_PASSWORD
