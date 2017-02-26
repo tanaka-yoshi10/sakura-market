@@ -20,7 +20,6 @@ class ProfilesController < ApplicationController
 
   def update_profile
     if @current_user.update_profile_only(profile_params)
-    #if @current_user.update_attributes(profile_params)
       redirect_to profiles_url
     else
       render :edit_profile
@@ -48,6 +47,7 @@ class ProfilesController < ApplicationController
       render :edit_password
     end
   end
+
   private
 
   def set_address

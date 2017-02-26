@@ -29,10 +29,14 @@ Rails.application.routes.draw do
   # 一般ログイン
   resource :session, path: "login", only: [:create] do
     member do
-       get  '/', to: "sessions#show"
-       delete  '/', to: "sessions#delete"
+      get  '/', to: "sessions#show"
+      delete  '/', to: "sessions#delete"
     end
   end
+
+  # サインアップ
+  get '/sign_up', to: "registrations#new"
+  post '/sign_up', to: "registrations#create"
 
   # 管理者
   namespace :admin do
