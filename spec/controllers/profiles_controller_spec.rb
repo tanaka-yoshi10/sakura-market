@@ -42,7 +42,7 @@ describe ProfilesController do
       user
     }
 
-    let(:request) {get :edit, params: {user_id: user.id}}
+    let(:request) {get :edit_profile, params: {user_id: user.id}}
 
     context '正常値・住所あり' do
       it "@current_userに適切な値が設定されていること" do
@@ -52,7 +52,7 @@ describe ProfilesController do
 
       it "renders the :edit template" do
         request
-        expect(response).to render_template :edit
+        expect(response).to render_template :edit_profile
       end
     end
 
@@ -64,7 +64,7 @@ describe ProfilesController do
 
       it "renders the :show template" do
         request
-        expect(response).to render_template :edit
+        expect(response).to render_template :edit_profile
       end
     end
   end
@@ -91,16 +91,16 @@ describe ProfilesController do
     end
   end
 
-  describe 'Patch #update' do
+  describe 'Patch #update_profile' do
     let!(:user) {
       user = create(:user_normal)
       session[:user_id] = user.id
       user
     }
-    let(:request) { patch :update, params: params }
+    let(:request) { patch :update_profile, params: params }
 
     context '正常値' do
-      let(:params) { {id: user.id, user: attributes_for(:user_normal, name: 'test9')} }
+      let(:params) { {id: user.id, user: {name: 'test9', email: 'test9@mail.jp'} }}
       it "@userに適切な値が設定されていること" do
         request
         user.reload
@@ -122,7 +122,7 @@ describe ProfilesController do
 
       it "redirects to #show" do
         request
-        expect(response).to render_template :edit
+        expect(response).to render_template :edit_profile
       end
     end
   end
@@ -136,7 +136,7 @@ describe ProfilesController do
     let!(:address) {create(:address, user_id: user.id)}
     let(:request) { patch :update_address, params: params }
 
-    context '正常値' do
+    context '正常値 プロフィール変更から呼ばれた場合、' do
       let(:params) { {id: address.id, user_id: user.id, address: attributes_for(:address, zip_code: '9990001')} }
       it "@addressに適切な値が設定されていること" do
         request
@@ -147,6 +147,19 @@ describe ProfilesController do
       it "redirects to #show" do
         request
         expect(response).to redirect_to profiles_path
+      end
+    end
+    context '正常値 カートから呼ばれた場合' do
+      let(:params) { {id: address.id, user_id: user.id, caller: 'cart', address: attributes_for(:address, zip_code: '9990001')} }
+      it "@addressに適切な値が設定されていること" do
+        request
+        address.reload
+        expect(address.zip_code).to eq '9990001'
+      end
+
+      it "redirects to #show" do
+        request
+        expect(response).to redirect_to cart_path
       end
     end
     context '異常値' do
@@ -160,6 +173,60 @@ describe ProfilesController do
       it "編集画面に戻る" do
         request
         expect(response).to render_template :edit_address
+      end
+    end
+  end
+
+  describe 'Patch #update_password' do
+    let!(:user) {
+      user = create(:user_normal)
+      session[:user_id] = user.id
+      user
+    }
+    let(:request) { patch :update_password, params: params }
+
+    context '正常なパスワードが設定された場合、' do
+      let(:params) { {id: user.id, user: {password: 'aaaa', password_confirmation: 'aaaa'} }}
+      it "パスワードが更新されていること" do
+        org_password_digest = user.password_digest
+        request
+        user.reload
+        expect(user.password_digest).not_to eq org_password_digest
+      end
+
+      it "redirects to #show" do
+        request
+        expect(response).to redirect_to profiles_path
+      end
+    end
+
+    context '異常値 パスワード未入力の場合' do
+      let(:params) { {id: user.id, user: {password: '', password_confirmation: ''} }}
+      it "パスワードが変更されていないこと" do
+        org_password_digest = user.password_digest
+        request
+        user.reload
+        expect(user.password_digest).to eq org_password_digest
+      end
+
+      it "編集画面に戻る" do
+        request
+        expect(response).to render_template :edit_password
+      end
+    end
+
+    context '異常値 パスワード不一致の場合' do
+      let(:params) { {id: user.id, user: {password: 'aaaa', password_confirmation: 'bbbb'} }}
+      it "パスワードが変更されていないこと" do
+        org_password_digest = user.password_digest
+        request
+        user.reload
+        expect(user.password_digest).to eq org_password_digest
+      end
+
+      it "編集画面に戻る" do
+        request
+        expect(response).to render_template :edit_password
       end
     end
   end

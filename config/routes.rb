@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :update]
 
   # プロフィール(自身の住所変更含む)
-  resource :profiles, only: [:show, :edit, :update] do
+  resource :profiles, only: [:show] do
     member do
       get 'edit_password'
       get 'edit_address'
+      get 'edit_profile'
       patch 'update_address'
       patch 'update_password'
+      patch 'update_profile'
     end
   end
 

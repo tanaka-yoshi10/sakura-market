@@ -1,4 +1,4 @@
-= simple_form_for([:admin, @current_user], url: '/profiles', method: :patch) do |f|
+= simple_form_for([:admin, @current_user], url: '/profiles/update_profile', method: :patch) do |f|
   = f.error_notification
   = f.input :name, label: '名前'
   = f.input :email, label: 'メールアドレス'

@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   def show
   end
 
-  def edit
+  def edit_profile
   end
 
   def edit_address
@@ -18,11 +18,12 @@ class ProfilesController < ApplicationController
   def edit_password
   end
 
-  def update
-    if @current_user.update_attributes(profile_params)
+  def update_profile
+    if @current_user.update_profile_only(profile_params)
+    #if @current_user.update_attributes(profile_params)
       redirect_to profiles_url
     else
-      render :edit
+      render :edit_profile
     end
   end
 
@@ -44,7 +45,7 @@ class ProfilesController < ApplicationController
     if @current_user.update_attributes(password_params)
       redirect_to profiles_url
     else
-      render :edit
+      render :edit_password
     end
   end
   private

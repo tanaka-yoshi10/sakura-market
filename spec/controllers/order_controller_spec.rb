@@ -47,49 +47,6 @@ describe OrdersController do
     end
   end
 
-=begin
-  describe 'GET #show' do
-    let!(:user) {
-      user = create(:user_normal)
-      session[:user_id] = user.id
-      user
-    }
-    let!(:ship_time) {
-      create(:ship_time_00)
-      create(:ship_time_03)
-    }
-    let!(:p1) {create(:product_tomato)}
-    let!(:p2) {create(:product_nasu)}
-    let!(:o1) {
-      o1 = create(:order_on_cart_2item, user_id: user.id)
-      o1.status = :ordered
-      o1.save
-      o1
-    }
-    let!(:o2) {
-      o2 = create(:order_on_cart_2item, user_id: user.id)
-      o2.status = :ordered
-      o2.save
-      o2
-    }
-
-    let(:request) { get :show, params: params }
-
-    context 'with valid attributes' do
-      let(:params) { {id: o1.id}}
-      it "assigns the requested contact to @product" do
-        get :show, params: {id: o1.id}
-        expect(assigns(:order)).to eq o1
-      end
-
-      it "renders the :show template" do
-        get :show, params: {id: o1.id}
-        expect(response).to render_template :show
-      end
-    end
-  end
-=end
-
   describe 'Patch #update' do
     let!(:user) {
       user = create(:user_normal)
@@ -135,13 +92,6 @@ describe OrdersController do
         expect(o1.ship_date).to eq today
       end
 
-=begin
-      it "htmlフォーマットの場合、showテンプレートが表示されること" do
-        request
-        expect(response).to render_template :show
-      end
-=end
-
       it '戻り値jsの場合,javascriptが戻されること' do
         request
         expect(response.headers['Content-Type']).to match 'text/javascript; charset=utf-8'
@@ -154,20 +104,13 @@ describe OrdersController do
         today = Date.new(now.utc.year, now.utc.month, now.utc.day)
       }
       let(:params) {
-        {id: o1.id, order: {ship_time_id: ship_time_03.id, ship_date: today, status: 'aaaa'} }
+        {id: o1.id, order: {ship_time_id: -1, ship_date: today } }
       }
       it "@orderが変更されていないこと" do
         request
         o1.reload
         expect(o1.status).to eq(:ordered)
       end
-
-=begin
-      it "htmlフォーマットの場合、showテンプレートが表示されること" do
-        request
-        expect(response).to render_template :show
-      end
-=end
 
       it '戻り値jsの場合,javascriptが戻されること' do
         request

@@ -3,8 +3,8 @@ FactoryGirl.define do
     name 'test'
     email 'test@email.com'
     tel '03-1111-1111'
-    password_digest '$2a$10$BH.IQxzd3kEWbHAuHDEWgedl2XW/2zcSV82L0VVuU6DYZlBri77D2'
-    password 'admins'
+    #password_digest '$2a$10$BH.IQxzd3kEWbHAuHDEWgedl2XW/2zcSV82L0VVuU6DYZlBri77D2'
+    password 'test'
 
     trait :normal do
       admin_flag false
