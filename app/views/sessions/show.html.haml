@@ -3,8 +3,9 @@
   - if flash[:alert]
     .alert.alert-danger
       = flash[:alert]
-  = f.error_notification
   = hidden_field_tag :referer, flash[:referer]
+  = f.error_notification
   = f.input :email
   = f.input :password
-  = f.button :submit, 'ログイン'
+  = f.button :submit, 'ログイン', class: 'btn btn-primary'
+= link_to 'サインアップ', sign_up_path, class: 'btn btn-info', style: 'margin-top: 10px;'

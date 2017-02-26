@@ -1,9 +1,11 @@
 class ShoppingController < ApplicationController
+  PER_PAGE_NUM = 6
+
   before_action :set_new_item, only: [:index, :show]
   helper_method :sort_column, :sort_direction
 
   def index
-    @products = Product.where({:display_flag => true }).order(sort_column + ' ' + sort_direction).page(params[:page]).per(5)
+    @products = Product.where({:display_flag => true }).order(sort_column + ' ' + sort_direction).page(params[:page]).per(PER_PAGE_NUM)
   end
 
   def show
