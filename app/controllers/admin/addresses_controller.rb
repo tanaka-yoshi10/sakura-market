@@ -13,6 +13,7 @@ class Admin::AddressesController < Admin::AdminApplicationController
   end
 
   private
+  # [review] ここだけprivateのインデントが違うようです。プロジェクトで統一しておきたいところです。
 
     def set_address
       @user = User.find(params[:user_id])

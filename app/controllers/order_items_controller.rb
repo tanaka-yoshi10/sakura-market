@@ -1,5 +1,8 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:update, :destroy]
+  # [review] current_orderから取得しているのはセキュリティ観点で良いですね。
+  # /orders/:order_id/order_itemsの:order_idを無視するのであれば、
+  # order配下に入れる必要ないのではと思いました。
 
   def create
     @order_item = current_order.order_items.find_or_initialize_by(product_id: order_item_params[:product_id])
@@ -7,6 +10,8 @@ class OrderItemsController < ApplicationController
       @order_item.update!(order_item_params)
     else
       @order_item.quantity = @order_item.quantity + order_item_params[:quantity].to_i
+      # [review] こう書けるのではと思いました。
+      # @order_item.quantity += order_item_params[:quantity].to_i
       @order_item.save!
     end
   end

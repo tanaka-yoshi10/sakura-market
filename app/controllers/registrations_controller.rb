@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-
+  # [reveiw] 不要な空行は消したいです
   skip_before_action :user_logged_in?
 
   def new
@@ -20,5 +20,5 @@ class RegistrationsController < ApplicationController
   def sign_up_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-
+  # [reveiw] 不要な空行は消したいです
 end

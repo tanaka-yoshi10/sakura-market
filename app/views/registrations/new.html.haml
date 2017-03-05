@@ -1,5 +1,6 @@
 = simple_form_for([:admin, @user], url: '/sign_up', method: :post) do |f|
   = f.error_notification
+  - # [review] i18nで定義(ja.ymlなど)して、label指定を無くしたいです
   = f.input :name, label: '名前'
   = f.input :email, label: 'メールアドレス'
   = f.input :password, label: 'パスワード'

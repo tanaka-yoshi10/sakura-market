@@ -72,6 +72,9 @@ class Order < ApplicationRecord
 
   private
 
+  # [review] enumerizeでpredicted: trueを指定するとon_cart?で判定できるようになり、
+  # このメソッドは不要にできるかと思います。
+  # enumerize :status, in: STATUSES, default: :on_cart, scope: true, predicates: true
   def is_on_cart
     self.status.on_cart?
   end

@@ -105,6 +105,8 @@ describe Admin::ProductsController do
         pending("noticeメッセージがURLに付加され、エラーとなってしまう")
         request
         expect(response).to redirect_to admin_product_path(assigns[:product])
+        # [review] noticeの内容まで指定してしまうので良いかと思います。
+        # expect(response).to redirect_to admin_product_path(assigns[:product], notice: '商品の登録が完了しました')
       end
     end
     context '異常値' do
@@ -143,6 +145,8 @@ describe Admin::ProductsController do
         pending("noticeメッセージがURLに付加され、エラーとなってしまう")
         request
         expect(response).to redirect_to admin_product_path(assigns[:product])
+        # [review] noticeの内容まで指定してしまうので良いかと思います。
+        # expect(response).to redirect_to admin_product_url(assigns[:product], notice: '商品の更新が完了しました')
       end
     end
     context '異常値' do

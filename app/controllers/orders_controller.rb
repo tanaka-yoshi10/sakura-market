@@ -10,8 +10,12 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       # REVIEW 外部viewを指定している
       render action: '../carts/update_ship_time'
+      # [review] こう書た方が良い気がします
+      # render '/carts/update_ship_time'
     else
       render status: :internal_server_error
+      # [review] 500エラーにするのであればこう書くと良いのでは無いでしょうか
+      # head :internal_server_errord
     end
   end
 

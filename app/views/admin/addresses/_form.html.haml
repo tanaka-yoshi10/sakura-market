@@ -1,5 +1,6 @@
 = simple_form_for [:admin, @user, @address] do |f|
   = f.error_notification
+  - # [review] i18nで定義(ja.ymlなど)して、label指定を無くしたいです
   = f.input :zip_code, label: '郵便番号'
   = f.input :prefectures, label: '都道府県'
   = f.input :city, label: '市区町村'

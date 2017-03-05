@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
 
   # REVIEW カートと注文履歴を別Controllerとしているが、一緒でもよいか？（viewは分けたい）
+  # [review] → 別が良いと思います(そのほうが責任分担がわかりやすいと思います)
+  # これが理想というわけでは無いですが、以下参考になる記事のURLです。
+  # http://postd.cc/how-dhh-organizes-his-rails-controllers/
 
   def show
     @order = current_order

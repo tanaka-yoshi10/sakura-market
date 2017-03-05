@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   # REVIEW AddressesControllerは管理者専用としたので、自分の住所変更はここに組み込み
   # REVIEW プロフィール変更とパスワード変更を別画面としたのでcontrollerのメソッドも別にしている
+  # routesにもコメントしたのですが、アクションを別にするよりもcontrollerも分けてしまうのはどうでしょうか。
 
   def show
   end
@@ -12,6 +13,9 @@ class ProfilesController < ApplicationController
 
   def edit_address
     # REVIEW 呼出元画面（caller）によって遷移先を変える
+    # このやり方で良いかと思います。
+    # (paramsに遷移元情報を持たせずに実現するには、cartから呼ばれるアドレス編集画面は別のcontrollerにする
+    # という手があるかかと思いますが、そこまでしなくても良いかな、とも思います)
     @caller = params[:caller]
   end
 
@@ -29,6 +33,7 @@ class ProfilesController < ApplicationController
   def update_address
     if @address.update(address_params)
       # REVIEW 呼出元画面（caller）によって遷移先を変える
+      # このやり方で良いかと思います。
       caller = params[:caller]
       if caller == 'cart'
         redirect_to cart_url

@@ -3,6 +3,9 @@ class Admin::ProductsController < Admin::AdminApplicationController
 
   def index
     @products = Product.where({:display_flag => true }).order('display_order ASC')
+    # [review] 非表示の商品も表示したほうが良いのではないでしょうか
+    # ここで表示しないと、どこにも出てこないのではと思いました。
+    #@products = Product.order(display_order: :asc)
   end
 
   def show

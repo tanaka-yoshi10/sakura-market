@@ -1,6 +1,7 @@
 = simple_form_for [:admin, @product] do |f|
   .row
     = f.error_notification
+    - # [review] i18nで定義(ja.ymlなど)して、label指定を無くしたいです
     = f.input :name, label: '商品名'
     = f.input :price, label: '価格', as: :decimal
     = f.input :description, label: '商品説明', as: :text

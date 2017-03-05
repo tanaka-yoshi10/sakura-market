@@ -7,6 +7,7 @@ feature '管理者のユーザ管理機能' do
   end
 
   scenario 'ユーザ一覧を表示する' do
+    # [review] backgroundに書いて共通化してはどうでしょうか。
     admin = create(:user_admin)
     admin_sign_in(admin)
 

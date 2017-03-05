@@ -8,6 +8,7 @@ class ShoppingController < ApplicationController
     @products = Product.where({:display_flag => true }).order(sort_column + ' ' + sort_direction).page(params[:page]).per(PER_PAGE_NUM)
   end
 
+  # [review] これはProductsControllerを作って、Product#showにしたいです
   def show
     @product = Product.find(params[:id])
   end
@@ -15,6 +16,7 @@ class ShoppingController < ApplicationController
   private
 
   def set_new_item
+    # set_new_itemだったら インスタンス変数名は@new_itemとかになってて欲しいです
     @order_item = current_order.order_items.new
   end
 
